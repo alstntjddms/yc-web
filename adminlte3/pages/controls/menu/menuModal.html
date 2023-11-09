@@ -1,0 +1,167 @@
+<!-- /.modal -->
+<div class="modal fade" id="modal-xl" data-backdrop="static">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">menu 관리</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- 데이터 로드 시작 -->
+        <div class="card card-default">
+          <!-- /.card-body -->
+          <div class="card-body">
+            <div class="row">
+              <!-- col -->
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="menu1">menuCode</label>
+                    <input
+                      class="form-control"
+                      id="menu1"
+                      v-model="menu.menuCode"
+                      :value="menu.menuCode"
+                      disabled
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="menu2">menuTitle</label>
+                    <input
+                      class="form-control"
+                      id="menu2"
+                      v-model="menu.menuTitle"
+                      :value="menu.menuTitle"
+                      :disabled="mode =='default'"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- /.col -->
+              <!-- col -->
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="menu3">menuIcon</label>
+                    <input
+                      class="form-control"
+                      id="menu3"
+                      v-model="menu.menuIcon"
+                      :value="menu.menuIcon"
+                      :disabled="mode =='default'"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="menu4">menuLink</label>
+                    <input
+                      class="form-control"
+                      id="menu4"
+                      v-model="menu.menuLink"
+                      :value="menu.menuLink"
+                      :disabled="mode =='default'"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- /.col -->
+              <!-- col -->
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="menu5">menuBadgeText</label>
+                    <input
+                      class="form-control"
+                      id="menu5"
+                      v-model="menu.menuBadgeText"
+                      :value="menu.menuBadgeText"
+                      :disabled="mode =='default'"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="menu6">menuClass</label>
+                    <input
+                      class="form-control"
+                      id="menu6"
+                      v-model="menu.menuClass"
+                      :value="menu.menuClass"
+                      :disabled="mode =='default'"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- /.col -->
+              <!-- col -->
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="menu1">parentCode</label>
+                    <input
+                      class="form-control"
+                      id="menu1"
+                      v-model="menu.parentCode"
+                      :value="menu.parentCode"
+                      :disabled="mode =='default'"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- /.col -->
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- 데이터 로드 끝 -->
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          닫기
+        </button>
+        <div>
+          <button
+            v-if="mode =='default'"
+            type="button"
+            class="btn btn-success"
+            @click="clickUpdateMenu"
+          >
+            수정
+          </button>
+          <button
+            v-if="mode =='update'"
+            type="button"
+            class="btn btn-danger"
+            @click="deleteMenu"
+          >
+            삭제
+          </button>
+          <button
+            v-if="mode =='update'"
+            type="button"
+            class="btn btn-primary"
+            @click="updateMenu"
+          >
+            업데이트
+          </button>
+          <button
+            v-if="mode =='add'"
+            type="button"
+            class="btn btn-primary"
+            @click="addMenu"
+          >
+            추가
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

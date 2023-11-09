@@ -1,0 +1,162 @@
+<!-- /.modal -->
+<div class="modal fade" id="modal-xl">
+  <div class="modal-dialog modal-l">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">menuAuth 관리</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- 데이터 로드 시작 -->
+        <div class="card card-default">
+          <!-- /.card-body -->
+          <div class="card-body">
+            <div class="row">
+              <!-- col -->
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="menu1">menuCode</label>
+                    <input
+                      class="form-control"
+                      id="menu1"
+                      v-model="menuAuth.menu_CODE"
+                      :value="menuAuth.menu_CODE"
+                      disabled
+                    />
+                  </div>
+                  
+                </div>
+              </div>
+              <!-- /.col -->
+              <!-- col -->
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="menu1">USER_CODE</label>
+                    <input
+                      class="form-control"
+                      id="menu1"
+                      v-model="menuAuth.user_CODE"
+                      :value="menuAuth.user_CODE"
+                      disabled
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="menu6">USER_NAME</label>
+                    <input
+                      class="form-control"
+                      id="menu6"
+                      v-model="menuAuth.user_CODE"
+                      :value="menuAuth.user_CODE"
+                      disabled
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- /.col -->
+              <!-- col -->
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <div class="col-md-3"> <!-- Adjust the column width as needed -->
+                    <label for="menu3">C</label>
+                    <input
+                      class="form-control"
+                      type="checkbox"
+                      id="menu3"
+                      v-model="menuAuth.c"
+                      :disabled="mode === 'default'"
+                    />
+                  </div>
+                  <div class="col-md-3"> <!-- Adjust the column width as needed -->
+                    <label for="menu2">R</label>
+                    <input
+                      class="form-control"
+                      type="checkbox"
+                      id="menu2"
+                      v-model="menuAuth.r"
+                      :disabled="mode === 'default'"
+                    />
+                  </div>
+                  <div class="col-md-3"> <!-- Adjust the column width as needed -->
+                    <label for="menu4">U</label>
+                    <input
+                      class="form-control"
+                      type="checkbox"
+                      id="menu4"
+                      v-model="menuAuth.u"
+                      :disabled="mode === 'default'"
+                    />
+                  </div>
+                  <div class="col-md-3"> <!-- Adjust the column width as needed -->
+                    <label for="menu5">D</label>
+                    <input
+                      class="form-control"
+                      type="checkbox"
+                      id="menu5"
+                      v-model="menuAuth.d"
+                      :disabled="mode === 'default'"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- /.col -->
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- 데이터 로드 끝 -->
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          닫기
+        </button>
+        <div>
+          <button
+            v-if="mode =='default'"
+            type="button"
+            class="btn btn-success"
+            @click="clickUpdateMenuAuth"
+          >
+            수정
+          </button>
+          <button
+            v-if="mode =='update'"
+            type="button"
+            class="btn btn-danger"
+            @click="deleteMenu"
+          >
+            삭제
+          </button>
+          <button
+            v-if="mode =='update'"
+            type="button"
+            class="btn btn-primary"
+            @click="updateMenuAuth"
+          >
+            업데이트
+          </button>
+          <button
+            v-if="mode =='add'"
+            type="button"
+            class="btn btn-primary"
+            @click="addMenu"
+          >
+            추가
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal

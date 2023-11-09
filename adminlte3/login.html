@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AdminLTE 3 | Log in</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css" />
+    <!-- icheck bootstrap -->
+    <link
+      rel="stylesheet"
+      href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./dist/css/adminlte.min.css" />
+  </head>
+  <body class="hold-transition login-page">
+    <div class="login-box" id="app">
+      <div class="login-logo">
+        <a href="./login.html"><b>OpenID Connect 로그인</b></a>
+      </div>
+      <!-- /.login-logo -->
+      <div class="card">
+        <div class="card-body login-card-body">
+          <p class="login-box-msg">
+            {{name ? "로그인 성공함 " + name : "Sign in to start your session"}}
+          </p>
+          <p>{{aud ? "aud[" + aud + "]" : "aud없음"}}</p>
+          <p>id_token 유효성 여부(server Check) : {{auth}}</p>
+          <form onsubmit="return false">
+            <!-- <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="이름">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div> -->
+            <div class="row">
+              <!-- /.col -->
+              <div v-if="!aud" class="col-12">
+                <button
+                  type="button"
+                  @click="login"
+                  class="btn btn-primary btn-block"
+                >
+                  로그인
+                </button>
+              </div>
+              <!-- /.col -->
+              <!-- /.col -->
+              <div v-if="aud" div class="col-12">
+                <button
+                  type="button"
+                  @click="logout"
+                  class="btn btn-danger btn-block"
+                >
+                  로그아웃
+                </button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+        </div>
+        <!-- /.login-card-body -->
+      </div>
+    </div>
+    <!-- /.login-box -->
+
+    <!-- jQuery -->
+    <script src="./plugins/jquery/jquery.min.js"></script>
+    <!-- axios.js -->
+    <script src="./plugins/axios/axios.min.js"></script>
+    <!-- Vue.js -->
+    <script src="./plugins/vue/vue.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="./dist/js/adminlte.min.js"></script>
+    <!-- framework -->
+    <script type="module" src="./framework/computed.js?v=1"></script>
+    <!-- login.js -->
+    <script type="module" src="./login.js?v=1"></script>
+  </body>
+</html>

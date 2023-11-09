@@ -1,0 +1,268 @@
+  <!-- /.modal -->
+  <div class="modal fade" id="modal-xl">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">a 조회</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- 데이터 로드 시작 -->
+            <div class="card card-default">
+              <!-- /.card-body -->
+              <div class="card-body">
+                <div class="row">
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <div class="form-group row">
+                      <div class="col-md-6">
+                        <label for="id1">Matter Code</label>
+                        <input class="form-control" style="width: 100%;" id="id1" v-model="a.id1" :value="a.id1" :disabled="mode =='default'">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="id2">Category</label>
+                        <input class="form-control" style="width: 100%;" id="id2" v-model="a.id2" :value="a.id2" :disabled="mode =='default'">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="id1">책임PF</label>
+                        <input class="form-control" style="width: 100%;" id="id1" v-model="a.id1" :value="a.id1" :disabled="mode =='default'">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="id2">관리PF</label>
+                        <input class="form-control" style="width: 100%;" id="id2" v-model="a.id2" :value="a.id2" :disabled="mode =='default'">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>1.Matter Title</label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>KOR</label>
+                      <input class="form-control" style="width: 100%;" @model="a.id3" :value="a.id3" :disabled="mode =='default'"></input>
+                    </div>
+                    <div class="form-group">
+                      <label>ENG</label>
+                      <input class="form-control" style="width: 100%;" @model="a.id4" :value="a.id4" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- Client 정보 -->
+                  <!-- col -->
+                  <label>2. Client 정보</label>
+                  <button class="btn btn-primary float-right" style="margin-bottom: 1%;" @click="addClient">추가</button>
+                  <div class="col-md-12">
+                    <div class="form-group row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Client</label>
+                          <input class="form-control" style="width: 100%;" @model="a.id3" :value="a.id3" :disabled="mode =='default'"></input>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <label>Country</label>
+                        <input class="form-control" style="width: 100%;" @model="a.id3" :value="a.id3" :disabled="mode =='default'"></input>
+                      </div>
+                      <div class="col-md-3">
+                        <label>Industry</label>
+                        <input class="form-control" style="width: 100%;" @model="a.id3" :value="a.id3" :disabled="mode =='default'"></input>
+                      </div>
+                    </div>
+                  </div>
+                  <div v-for="client in clients" :key="client.name">{{client}}</div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>3.일정</label>
+                  <div class="col-md-12">
+                    <div class="form-group row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>발표일(언론 공개)</label>
+                          <input class="form-control" style="width: 100%;" @model="a.id3" :value="a.id3" :disabled="mode =='default'"></input>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>거래종결일(판결선고일)</label>
+                          <input class="form-control" style="width: 100%;" @model="a.id3" :value="a.id3" :disabled="mode =='default'"></input>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>4.Cross Border</label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input class="form-control" style="width: 100%;" @model="a.id3" :value="a.id3" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>5.공개여부(Confidential)</label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input class="form-control" style="width: 100%;" @model="a.id5" :value="a.id5" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>6.거래 금액</label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>id5</label>
+                      <input class="form-control" style="width: 100%;" @model="a.id5" :value="a.id5" :disabled="mode =='default'"></input>
+                    </div>
+                    <div class="form-group">
+                      <label>id6</label>
+                      <input class="form-control" style="width: 100%;" @model="a.id6" :value="a.id6" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>7.관련PF</label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input class="form-control" style="width: 100%;" @model="a.id5" :value="a.id5" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>8.업무분야(Practice) 복수선택가능(multiple selection allowed)</label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input class="form-control" style="width: 100%;" @model="a.id5" :value="a.id5" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>9. Description of the Matter(딜에 대한 설명:의의, 복잡성, 혁신성, 창의성) - 거래종결시 작성</label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>KOR</label>
+                      <textarea class="form-control" style="width: 100%;" @model="a.id5" :value="a.id5" :disabled="mode =='default'"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>ENG</label>
+                      <textarea class="form-control" style="width: 100%;" @model="a.id5" :value="a.id5" :disabled="mode =='default'"></textarea>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>10.관련 언론 기사</label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input class="form-control" style="width: 100%;" @model="a.id5" :value="a.id5" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>11.관련 Matter Code</label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input class="form-control" style="width: 100%;" @model="a.id5" :value="a.id5" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>12.관리자</label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <textarea class="form-control" style="width: 100%;" @model="a.id5" :value="a.id5" :disabled="mode =='default'"></textarea>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-12">
+                    <hr> <!-- 구분선 -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <label>13.실적 작성 History</label>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input class="form-control" style="width: 100%;" @model="a.id5" :value="a.id5" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+            <!-- /.card -->
+          </div>
+        <!-- 데이터 로드 끝 -->
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+          <div>
+            <!-- <button v-if="mode =='default'" type="button" class="btn btn-success" @click="clickUpdate">수정</button> -->
+            <button v-if="mode =='update'" type="button" class="btn btn-primary">저장</button>
+          </div>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->

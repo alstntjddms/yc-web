@@ -1,0 +1,168 @@
+<!-- /.modal -->
+<div class="modal fade" id="modal-xl">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">고객 조건 선택</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- 데이터 로드 시작 -->
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <!-- card-header -->
+                  <div class="card-header">
+                    <h3 class="card-title"><b>고객 조건 선택 팝업</b></h3>
+
+                    <!-- <button
+              class="btn btn-primary float-right"
+              @click="clickAddMenu"
+            >
+              추가
+            </button> -->
+                  </div>
+                  <!-- card-body -->
+                  <div class="row">
+                    <div class="card-body col-6">
+                      <button class="btn btn-dark" style="width: 100%">
+                        SELECT CSID FROM 고객 WHERE ( INJECTION )
+                      </button>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon3"
+                            >INJECTION =
+                          </span>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="basic-url"
+                          aria-describedby="basic-addon3"
+                        />
+                      </div>
+                      <button class="btn btn-secondary">
+                        조건 가능 컬럼 CSID, CSNAME, CSMAIL
+                      </button>
+                      <button class="btn btn-info">이번주</button>
+                      <button class="btn btn-primary float-right">조회</button>
+                      <hr />
+                      <h5><b>현재 조회된 고객 리스트 결과</b></h5>
+                      <table
+                        id="example1"
+                        class="table table-bordered table-striped"
+                      >
+                        <thead>
+                          <tr>
+                            <th>고객명</th>
+                            <th>고객이름</th>
+                            <th>고객메일</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="a in as" :key="a.id1">
+                            <td>{{ a.id1 }}</td>
+                            <td>{{ a.id2 }}</td>
+                            <td>{{ a.id3 }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <hr />
+                      <button class="btn btn-dark" style="width: 100%">
+                        반영
+                      </button>
+                      <div class="btn-group" style="width: 100%">
+                        <button class="btn btn-danger">MINUS</button>
+                        <button class="btn btn-primary">PLUS</button>
+                      </div>
+                    </div>
+                    <!-- Vertical line -->
+
+                    <div
+                      class="col-0.1"
+                      style="border-left: 1px solid #ccc"
+                    ></div>
+                    <!-- Vertical line -->
+
+                    <div class="card-body col-auto">
+                      <h5><b>고객 선택 히스토리</b></h5>
+                      <table
+                        id="example1"
+                        class="table table-bordered table-striped"
+                      >
+                        <thead>
+                          <tr>
+                            <th>반영</th>
+                            <th>고객 선택 히스토리</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="a in as" :key="a.id1">
+                            <td>{{ a.id1 }}</td>
+                            <td>{{ a.id2 }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <hr />
+                      <h5><b>고객 리스트</b></h5>
+                      <table
+                        id="example1"
+                        class="table table-bordered table-striped"
+                      >
+                        <thead>
+                          <tr>
+                            <th>고객명</th>
+                            <th>고객이름</th>
+                            <th>고객메일</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="a in as" :key="a.id1">
+                            <td>{{ a.id1 }}</td>
+                            <td>{{ a.id2 }}</td>
+                            <td>{{ a.id3 }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- 데이터 로드 끝 -->
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          닫기
+        </button>
+        <div>
+          <!-- <button v-if="mode =='default'" type="button" class="btn btn-success" @click="clickUpdate">수정</button> -->
+          <button v-if="mode =='update'" type="button" class="btn btn-primary">
+            저장
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

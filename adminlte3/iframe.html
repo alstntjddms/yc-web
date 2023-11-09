@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TEST | TEST</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./dist/css/adminlte.min.css" />
+    <!-- overlayScrollbars -->
+    <link
+      rel="stylesheet"
+      href="./plugins/overlayScrollbars/css/OverlayScrollbars.min.css"
+    />
+    <link rel="stylesheet" href="iframe.css" />
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  </head>
+    
+    <div class="wrapper" id="app">
+      <!-- 로딩 오버레이 -->
+      <div id="overlay">
+        <div class="spinner"></div> <!-- 수정된 로딩 스피너 -->
+        <div>Loading...</div>
+      </div>
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #0f2d4d;">
+        <!-- Brand Logo -->
+        <a href="#" class="brand-link" style="text-align: center;">
+          <!-- <img
+            src="dist/img/AdminLTELogo.png"
+            alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3"
+            style="opacity: 0.8"
+          /> -->
+          <span class="brand-text font-weight-light">타이틀</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="display: flex; justify-content: space-between;">
+            <div class="image">
+              <!-- <img
+                src="dist/img/user2-160x160.jpg"
+                class="img-circle elevation-2"
+                alt="User Image"
+              /> -->
+            </div>
+            <div class="info" style="margin-right: 10px;">
+              <a href="#" class="d-block"
+                >{{name ? name : "Loading..."}} {{timeDisplay}}
+                <i class="fas fa-sign-out-alt ml-2" @click="logout"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- SidebarSearch Form -->
+          <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+              <input
+                class="form-control form-control-sidebar"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-sidebar">
+                  <i class="fas fa-search fa-fw"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- 사이드바 동적 생성 -->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <li v-for="(menuItem, index) in menuItems" :key="index" class="nav-item" v-if="menuItem.children">
+                <a v-if="menuItem.link" :href="menuItem.link" class="nav-link">
+                  <i v-if="menuItem.icon" :class="menuItem.icon + ' nav-icon'"></i>
+                  <p>
+                    {{ menuItem.title }}
+                    <i v-if="menuItem.children" class="right fas fa-angle-left"></i>
+                    <span v-if="menuItem.badge" :class="['right badge', menuItem.badge.class]">{{ menuItem.badge.text }}</span>
+                  </p>
+                </a>
+                <a v-else href="#" class="nav-link">
+                  <i v-if="menuItem.icon" :class="menuItem.icon + ' nav-icon'"></i>
+                  <p>
+                    {{ menuItem.title }}
+                    <i v-if="menuItem.children" class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul v-if="menuItem.children" class="nav nav-treeview">
+                  <li v-for="(childItem, childIndex) in menuItem.children" :key="childIndex" class="nav-item">
+                    <a :href="childItem.link" class="nav-link">
+                      <i v-if="childItem.icon" :class="childItem.icon + ' nav-icon'"></i>
+                      <p>{{ childItem.title }}</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div
+        class="content-wrapper iframe-mode"
+        data-widget="iframe"
+        data-loading-screen="750"
+      >
+        <div
+          class="nav navbar navbar-expand navbar-white navbar-light border-bottom p-0"
+        >
+        <!-- 푸시메뉴 추가 -->
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+            ><i class="fas fa-bars"></i
+          ></a>
+        </li>
+        <!-- 푸시메뉴 추가 -->
+          <div class="nav-item dropdown">
+            <a
+              class="nav-link bg-danger dropdown-toggle"
+              data-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Close</a
+            >
+            <div class="dropdown-menu mt-0">
+              <a
+                class="dropdown-item"
+                href="#"
+                data-widget="iframe-close"
+                data-type="all"
+                >Close All</a
+              >
+              <a
+                class="dropdown-item"
+                href="#"
+                data-widget="iframe-close"
+                data-type="all-other"
+                >Close All Other</a
+              >
+            </div>
+          </div>
+          <a class="nav-link bg-light" href="#" @click="refresh"
+            ><i class="fas fa-sync-alt"></i
+          ></a>
+          <a class="nav-link bg-light" href="#" data-widget="iframe-scrollleft"
+            ><i class="fas fa-angle-double-left"></i
+          ></a>
+          <ul class="navbar-nav overflow-hidden" role="tablist"></ul>
+          <a class="nav-link bg-light" href="#" data-widget="iframe-scrollright"
+            ><i class="fas fa-angle-double-right"></i
+          ></a>
+          <a class="nav-link bg-light" href="#" data-widget="iframe-fullscreen"
+            ><i class="fas fa-expand"></i
+          ></a>
+        </div>
+        <div class="tab-content">
+          <div class="tab-empty">
+            <h2 class="display-4">No tab selected!</h2>
+          </div>
+          <!-- <div class="tab-loading">
+            <div>
+              <h2 class="display-4">
+                Tab is loading <i class="fa fa-sync fa-spin"></i>
+              </h2>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <!-- /.content-wrapper -->
+      <!-- <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.2.0
+    </div>
+  </footer> -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="./plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="./plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- jQuery Cookie -->
+    <script src="./plugins/jquery-cookie/jquery.cookie.min.js"></script>
+    <!-- axios.js -->
+    <script src="./plugins/axios/axios.min.js"></script>
+    <!-- Vue.js -->
+    <script src="./plugins/vue/vue.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge("uibutton", $.ui.button);
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="./plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="./dist/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="./dist/js/demo.js"></script>
+    <!-- framework computed -->
+    <script type="module" src="./framework/computed.js"></script>
+    <!-- iframe.js -->
+    <script type="module" src="./iframe.js?v=1"></script>
+    <!-- SweetAlert2 -->
+    <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- framework alert -->
+    <script type="module" src="./framework/alert.js"></script>
+
+  </body>
+</html>

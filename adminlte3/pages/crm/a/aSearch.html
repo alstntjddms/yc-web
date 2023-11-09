@@ -1,0 +1,127 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="d-flex justify-content-between">
+            <h3 class="card-title">검색 조건</h3>
+            <button
+              class="btn btn-link btn-sm float-right"
+              type="button"
+              data-toggle="collapse"
+              data-target="#searchCollapse"
+              aria-expanded="false"
+              aria-controls="searchCollapse"
+            >
+              검색조건 접기/펴기
+            </button>
+          </div>
+        </div>
+        <div class="collapse" id="searchCollapse">
+          <div class="card-body">
+            <div class="row">
+              <!-- Add your search condition inputs here -->
+              <div class="col-md-1">
+                <div class="form-group">
+                  <label for="searchField1">검색 조건1</label>
+                  <input type="text" class="form-control" id="searchField1" />
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="form-group">
+                  <label for="searchField2">검색 조건 2</label>
+                  <input type="text" class="form-control" id="searchField2" />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="searchField3">검색 조건 3</label>
+                  <input type="text" class="form-control" id="searchField3" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="searchField4">검색 조건 4</label>
+                  <input type="text" class="form-control" id="searchField4" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="searchField5">검색 조건 5</label>
+                  <input type="text" class="form-control" id="searchField5" />
+                </div>
+              </div>
+              <!-- Add more search condition input fields as needed -->
+            </div>
+            <div class="row">
+              <!-- Add your search condition inputs here -->
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="searchField6">검색 조건 6</label>
+                  <input type="text" class="form-control" id="searchField6" />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="searchField7">검색 조건 7</label>
+                  <input type="text" class="form-control" id="searchField7" />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="searchField8">Start Date</label>
+                  <div class="input-group date">
+                    <input
+                      type="text"
+                      class="form-control datepicker"
+                      id="searchField8"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text"
+                        ><i class="far fa-calendar-alt"></i
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="searchField9">End Date</label>
+                  <div class="input-group date">
+                    <input
+                      type="text"
+                      class="form-control datepicker"
+                      id="searchField9"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text"
+                        ><i class="far fa-calendar-alt"></i
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="searchField10">검색 조건 10</label>
+                  <select class="form-control" id="searchField10">
+                    <option value="">Select an option</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Add more search condition input fields as needed -->
+            </div>
+            <div class="text-right">
+              <button class="btn btn-primary" type="button" @click="search">
+                검색
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

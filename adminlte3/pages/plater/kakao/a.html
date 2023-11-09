@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | DataTables</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../../dist/css/adminlte.css">
+  <style>
+    tr {
+      text-align: center;
+    }
+    tr td:not(:first-child) {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper" id="app">
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>모든 카카오 조회</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Kakao</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">카카오 관리용 테이블</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>id</th>
+                      <th>kakaoId</th>
+                      <th>kakaoAccessToken</th>
+                      <th>kakaoRefreshToken</th>
+                      <th>kakaoEmail</th>
+                      <th>kakaoNickName</th>
+                      <th>kakaoGender</th>
+                      <th>kakaoBirthday</th>
+                      <th>kakaoRegisterDate</th>
+                      <th>kakaoLoginDate</th>
+                      <th>kakaoMsgYn</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+  <!-- /.modal -->
+  <div class="modal fade" id="modal-xl">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">카카오 조회</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- 데이터 로드 시작 -->
+            <div class="card card-default">
+              <!-- /.card-body -->
+              <div class="card-body">
+                <div class="row">
+                  <!-- col -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>id</label>
+                      <input class="form-control" style="width: 100%;" @model="kakao.id" :value="kakao.id" :disabled="mode =='default'"></input>
+                    </div>
+                    <div class="form-group">
+                      <label>kakaoId</label>
+                      <input class="form-control" style="width: 100%;" @model="kakao.kakaoId" :value="kakao.kakaoId" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>kakaoAccessToken</label>
+                      <input class="form-control" style="width: 100%;" @model="kakao.kakaoAccessToken" :value="kakao.kakaoAccessToken" :disabled="mode =='default'"></input>
+                    </div>
+                    <div class="form-group">
+                      <label>kakaoRefreshToken</label>
+                      <input class="form-control" style="width: 100%;" @model="kakao.kakaoRefreshToken" :value="kakao.kakaoRefreshToken" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>kakaoEmail</label>
+                      <input class="form-control" style="width: 100%;" @model="kakao.kakaoEmail" :value="kakao.kakaoEmail" :disabled="mode =='default'"></input>
+                    </div>
+                    <div class="form-group">
+                      <label>kakaoNickName</label>
+                      <input class="form-control" style="width: 100%;" @model="kakao.kakaoNickName" :value="kakao.kakaoNickName" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>kakaoGender</label>
+                      <input class="form-control" style="width: 100%;" @model="kakao.kakaoGender" :value="kakao.kakaoGender" :disabled="mode =='default'"></input>
+                    </div>
+                    <div class="form-group">
+                      <label>kakaoBirthday</label>
+                      <input class="form-control" style="width: 100%;" @model="kakao.kakaoBirthday" :value="kakao.kakaoBirthday" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>kakaoRegisterDate</label>
+                      <input class="form-control" style="width: 100%;" @model="kakao.kakaoRegisterDate" :value="kakao.kakaoRegisterDate" :disabled="mode =='default'"></input>
+                    </div>
+                    <div class="form-group">
+                      <label>kakaoLoginDate</label>
+                      <input class="form-control" style="width: 100%;" @model="kakao.kakaoLoginDate" :value="kakao.kakaoLoginDate" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- col -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>kakaoMsgYn</label>
+                      <input class="form-control" style="width: 100%;" @model="kakao.kakaoMsgYn" :value="kakao.kakaoMsgYn" :disabled="mode =='default'"></input>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+            <!-- /.card -->
+          </div>
+        <!-- 데이터 로드 끝 -->
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+          <div>
+            <button v-if="mode =='default'" type="button" class="btn btn-success" @click="clickUpdate">수정</button>
+            <button v-if="mode =='update'" type="button" class="btn btn-primary">저장</button>
+          </div>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../../dist/js/demo.js"></script>
+<!-- Vue.js -->
+<script src="../../../plugins/vue/vue.min.js"></script>
+<!-- framework -->
+<script type="module" src="../../../framework/computed.js"></script>
+<!-- axios.js -->
+<script src="../../../plugins/axios/axios.min.js"></script>
+<!-- a.js -->
+<script type="module" src="a.js"></script>
+</body>
+</html>

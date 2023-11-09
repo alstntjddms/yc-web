@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AdminLTE 3 | 메뉴 관리</title>
+    <!-- menu css -->
+    <link rel="stylesheet" href="menu.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../../dist/css/adminlte.css" />
+    <!-- SweetAlert2 -->
+    <link
+      rel="stylesheet"
+      href="../../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css"
+    />
+  </head>
+  <body style="overflow: hidden">
+    <div class="wrapper" id="app">
+      <!-- 로딩 오버레이 -->
+      <div id="overlay">
+        <div class="spinner"></div>
+        <div>Loading...</div>
+      </div>
+      <!-- 로딩 오버레이 -->
+
+      <!-- Search Loading Modal -->
+      <div class="searchLoadingModal"></div>
+      <!-- /. Search Loading Modal -->
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>메뉴 관리</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">메뉴관리</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="card" style="height: 90vh">
+                  <!-- card-header -->
+                  <div class="card-header">
+                    <h3 class="card-title">메뉴 관리용 테이블</h3>
+                    <!-- <button
+                      class="btn btn-primary float-right"
+                      @click="clickAddMenu"
+                    >
+                      추가
+                    </button> -->
+                  </div>
+                  <!-- card-body -->
+                  <div class="row">
+                    <div
+                      class="card-body col-5"
+                      style="overflow: auto; height: 83vh"
+                    >
+                      <h4>사용자 목록</h4>
+                      <table
+                        id="example1"
+                        class="table table-bordered table-striped"
+                      >
+                        <thead>
+                          <tr>
+                            <th>ac_ID</th>
+                            <th>ac_LOGINID</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr
+                            v-for="user in users"
+                            :key="user.ac_ID"
+                            @click="clickUser(user)"
+                          >
+                            <td>{{ user.ac_ID }}</td>
+                            <td>{{ user.ac_LOGINID }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h4>메뉴 목록</h4>
+                      <table
+                        id="example1"
+                        class="table table-bordered table-striped"
+                      >
+                        <thead>
+                          <tr>
+                            <th>menuCode</th>
+                            <th>menuTitle</th>
+                            <th>parentCode</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="menu in menus" :key="menu.menuCode">
+                            <td>{{ menu.menuCode }}</td>
+                            <td>{{ menu.menuTitle }}</td>
+                            <td>{{ menu.parentCode }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div
+                      class="card-body col-auto"
+                      style="overflow: auto; height: 83vh"
+                    >
+                      <h4>{{user.ac_LOGINID}} 메뉴권한</h4>
+                      <table
+                        id="example1"
+                        class="table table-bordered table-striped"
+                      >
+                        <thead>
+                          <tr>
+                            <th>MENU_CODE</th>
+                            <th>C</th>
+                            <th>R</th>
+                            <th>U</th>
+                            <th>D</th>
+                            <th>USER_NAME</th>
+                            <th>USER_CODE</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr
+                            v-for="menuAuth in menuAuths"
+                            :key="menuAuth.menu_CODE"
+                            @click="clickMenuAuth(menuAuth)"
+                          >
+                            <td>{{ menuAuth.menu_CODE }}</td>
+                            <td>
+                              <input
+                                type="checkbox"
+                                v-model="menuAuth.c"
+                                disabled
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="checkbox"
+                                v-model="menuAuth.r"
+                                disabled
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="checkbox"
+                                v-model="menuAuth.u"
+                                disabled
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="checkbox"
+                                v-model="menuAuth.d"
+                                disabled
+                              />
+                            </td>
+                            <td>{{ menuAuth.user_NAME }}</td>
+                            <td>{{ menuAuth.user_CODE }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- Content Wrapper. Contains page content -->
+      <!-- Menu Modal -->
+
+      <div class="menuModal"></div>
+
+      <!-- /. Menu Modal -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- framework -->
+    <!-- <script type="module" src="../../../framework/computed.js"></script> -->
+    <!-- jQuery -->
+    <script src="../../../plugins/jquery/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Bootstrap 4 -->
+    <script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Vue.js -->
+    <script src="../../../plugins/vue/vue.min.js"></script>
+    <!-- axios.js -->
+    <script src="../../../plugins/axios/axios.min.js"></script>
+    <!-- menu.js -->
+    <script type="module" src="menu.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="../../../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- framework alert -->
+    <script type="module" src="../../../framework/alert.js"></script>
+  </body>
+</html>

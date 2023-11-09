@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AdminLTE 3 | Sortable</title>
+    <!-- menu css -->
+    <!-- <link rel="stylesheet" href="menu.css" /> -->
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../../dist/css/adminlte.css" />
+  </head>
+  <body>
+    <div class="wrapper" id="app">
+      <!-- 로딩 오버레이 -->
+      <div id="overlay">
+        <div class="spinner"></div>
+        <div>Loading...</div>
+      </div>
+      <!-- 로딩 오버레이 -->
+
+      <!-- Search Loading Modal -->
+      <div class="searchLoadingModal"></div>
+      <!-- /. Search Loading Modal -->
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Sortable</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">a</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Search content -->
+        <section class="content">
+          <div class="menuSearch"></div>
+        </section>
+        <!-- /.Search content -->
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <!-- card-header -->
+                  <div class="card-header">
+                    <h3 class="card-title">Sortable 테스트</h3>
+                  </div>
+                  <!-- card-body -->
+                  <div>
+                    <ul>
+                      <draggable v-model="list" draggable=".record_list">
+                        <li v-for="(item,index) in list" class="record_list">
+                          name : {{item.name}} <br />
+                          title : {{item.title}} <br />
+                          index : {{index}}
+                          <hr />
+                        </li>
+                      </draggable>
+                    </ul>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- Content Wrapper. Contains page content -->
+      <!-- Menu Modal -->
+      <div class="menuModal"></div>
+      <!-- /. Menu Modal -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- framework -->
+    <!-- <script type="module" src="../../../framework/computed.js"></script> -->
+    <!-- jQuery -->
+    <script src="../../../plugins/jquery/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Bootstrap 4 -->
+    <script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Vue.js -->
+    <script src="../../../plugins/vue/vue.min.js"></script>
+    <!-- axios.js -->
+    <script src="../../../plugins/axios/axios.min.js"></script>
+    <!-- sortable.js -->
+    <script type="module" src="sortable.js"></script>
+    <!-- CDNJS :: Sortable (https://cdnjs.com/) -->
+    <script src="//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <!-- CDNJS :: Vue.Draggable (https://cdnjs.com/) -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+  </body>
+</html>
